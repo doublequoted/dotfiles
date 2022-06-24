@@ -1,0 +1,15 @@
+#!/bin/bash
+
+JOURNAL_PATH=~/notes/journal/
+
+if [[ $1 = "today" ]]; then
+    vim $JOURNAL_PATH$(date +%Y-%m-%d).txt
+elif [[ $1 = "list" ]]; then
+    ls $JOURNAL_PATH | fzf
+elif [[ $1 = "help" ]]; then  
+    echo "help - show help"
+    echo "today - create today entity"
+    echo "list - list existed entities"
+else 
+    ls $JOURNAL_PATH | fzf 
+fi

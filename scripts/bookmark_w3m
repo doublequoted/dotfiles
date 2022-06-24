@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# exit when any command fails
+set -e
+
+w3m $(cat ~/notes/bookmarks.txt | fzf | grep -oP 'http.?://\S+')
+
+
+

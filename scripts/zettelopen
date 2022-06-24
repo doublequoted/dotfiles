@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ~/notes/zettelkasten && st vim $(ls | dmenu -p "notes::")
+

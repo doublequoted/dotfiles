@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl "wttr.in/Naberejnye_Chelny?T" | dmenu -l 50 -p "杖"

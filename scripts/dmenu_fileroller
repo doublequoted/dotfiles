@@ -1,0 +1,6 @@
+#!/bin/sh
+
+filec=$(find ~/ | dmenu -l 30)
+command=$(dmenu -p "command::") || exit 1
+
+

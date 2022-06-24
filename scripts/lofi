@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+notify-send "lofi" "Enjoy your lofi music!" && mpv --no-video "https://yewtu.be/watch?v=5qap5aO4i9A"

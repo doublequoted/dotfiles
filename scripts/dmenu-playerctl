@@ -1,0 +1,8 @@
+#!/bin/bash
+
+player=$(playerctl --list-all | dmenu -p "player::")
+
+[[ ! -z "$player" ]] && action=$(echo -e "play\npause\nplay-pause\nstop\nnext" | dmenu -p "action::")  || exit 1 
+
+playerctl -p "$player" $action
+

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# path
+IMG_PATH=~/photos/shots/
+mkdir -p $IMG_PATH
+
+# check scrot installation
+if ! command -v scrot &> /dev/null
+then
+    echo "scrot could not be found" | dmenu -p "error::"
+    exit 1
+fi
+
+# check xclip installation
+if ! command -v xclip &> /dev/null
+then
+    echo "xclip could not be found" | dmenu -p "error::"
+    exit 1
+fi
+
+# TODO check path
+
+#if [ -d $IMG_PATH ] 
+#then
+#    echo "directory $IMG_PATH exists. work silently" 
+#else
+#    anwser=$(echo -e "directory decribed in script does not exists. create $IMG_PATH?\nyes\nno" | dmenu -p "error::")
+#    if [ $answer = "yes" ] 
+#    then
+#        mkdir -p $IMG_PATH
+#    else 
+#        exit 1
+#    fi
+#fi
+
+# main body of the script
+chosen=$(echo -e "fullscreen\nselection\nfullscreen_to_clipboard\nselection_to_clipboard" | dmenu -b -p " will save to $IMG_PATH")
+
+if [[ $chosen = "fullscreen" ]]; then
+    scrot -d 0.5 $IMG_PATH'%Y-%m-%d-%H-%M-%S.png' -e 'dunstify "scrot" "screenshot saved" -I $f'
+elif [[ $chosen = "selection" ]]; then
+    scrot -d 0.5 -s $IMG_PATH'%Y-%m-%d-%H-%M-%S.png' -e 'dunstify "scrot" "screenshot saved" -I $f'
+elif [[ $chosen = "fullscreen_to_clipboard" ]]; then
+    scrot -d 0.5 '/tmp/%Y-%m-%d-%H-%M-%S.png' -e 'xclip -selection clipboard -target image/png -i $f && dunstify -I $f "scrot" "screenshot saved to clipboard"'
+elif [[ $chosen = "selection_to_clipboard" ]]; then
+    scrot -d -0.5 -s '/tmp/%Y-%m-%d-%H-%M-%S.png' -e 'xclip -selection clipboard -target image/png -i $f && dunstify -I $f "scrot" "screenshot saved to clipboard"'
+fi

@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/homewm/dwm: dwm 
+    ~/.config/homewm/dmenu: dmenu 
+    ~/.config/homewm/st: st 
+    ~/.config/homewm/surf: surf 
+    ~/.config/homewm/slstatus: slstatus 
+    ~/.config/homewm/tabbed: tabbed 
+    ~/.config/scripts: scripts 
+
+- create:
+    - ~/.config/homewm/
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+title=$(dmenu -b -p "enter a bookmark title and #tags:")
+url=$(dmenu -b -p "enter a bookmark url:")
+
+echo $title":" $url >> ~/notes/bookmarks.txt
+
+

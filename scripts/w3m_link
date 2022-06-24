@@ -1,0 +1,16 @@
+#!/bin/bash
+
+choice=$(echo -e  "xclip\nmpv\nsurf\nbookmarkadd" | dmenu -l 10 -p "$1") || exit 1
+
+if [ "$choice" = "mpv"  ]; then
+    mpv $1 &
+elif [ "$choice" = "xclip"  ]; then
+    echo -n $1 | xclip -sel clip
+elif [ "$choice" = "surf"  ]; then
+    surf $1
+elif [ "$choice" = "bookmarkadd"  ]; then
+    title=$(dmenu -b -p "enter a bookmark title and #tags:")
+
+    echo $title":" $1 >> ~/notes/bookmarks.txt
+fi
+

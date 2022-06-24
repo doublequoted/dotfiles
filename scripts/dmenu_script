@@ -1,0 +1,16 @@
+#!/bin/bash
+
+FOLDER=/home/www/scripts/
+FILE=$(ls $FOLDER | dmenu -p "scripts::")
+FILENAME=$FOLDER$FILE
+echo $FILENAME
+
+if [ ! -z $FILE ]; then 
+    st -e vim $FILENAME
+    
+    if [ -f "$FILENAME" ]; then
+        chmod +x $FILENAME 
+    fi
+else
+    echo "no file"
+fi

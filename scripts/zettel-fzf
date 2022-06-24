@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FILEPATH=~/notes/zettelkasten/
+vim $(fzf $FILEPATH)
+

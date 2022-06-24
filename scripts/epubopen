@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ -z "$1" ]] ; then
+echo "Usage: ./epub.sh book.epub"
+exit
+fi
+FILELIST=`zipinfo -1 "$1" | grep -E '(.xml|.html)' |sort`
+TEXT=""
+for FILE in $FILELIST
+do
+TEXT="$TEXT `unzip -caa "$1" "$FILE" `"
+done
+echo $TEXT | w3m 
+

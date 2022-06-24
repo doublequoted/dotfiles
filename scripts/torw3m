@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+torsocks w3m $1

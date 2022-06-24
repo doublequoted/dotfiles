@@ -1,0 +1,18 @@
+#!/bin/bash
+
+date=$(date)
+chosen=$(echo -e "lock\nkilldwm\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -b -p " $date")
+
+if [[ $chosen = "killdwm" ]]; then
+	killall dwm 
+elif [[ $chosen = "shutdown" ]]; then
+	systemctl poweroff
+elif [[ $chosen = "reboot" ]]; then
+	systemctl reboot
+elif [[ $chosen = "suspend" ]]; then
+	systemctl suspend
+elif [[ $chosen = "hibernate" ]]; then
+	systemctl hibernate
+elif [[ $chosen = "lock" ]]; then
+	slock
+fi

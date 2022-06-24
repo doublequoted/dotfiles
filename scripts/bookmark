@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# exit when any command fails
+set -e
+
+browser=${BROWSER:-firefox}
+
+$browser $(cat ~/notes/bookmarks.txt | dmenu -b -l 10 -p "bookmarks::" | grep -oP 'http.?://\S+')
+
+
+
